@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>home </title>
+    {% endblock %}
+{% block content %}
+    <h2> List of all students </h2> <br>
+    <table>
+        
+        <tr>
+            <th> Student Name </th>
+            <th> Modify Student Data </th>
+            <th> Delete Student Data </th>
+        </tr>
+        
+        {% for each in students %}
+        <tr>
+            <td>
+                <a href="{% url 'detail' each.pk %}"> {{ each.name }} </a>
+            </td>
+            <td>
+                <a href="{% url 'update' each.pk %}"> Modify </a>
+            </td>
+            <td>
+                <a href="{% url 'delete' each.pk %}"> Delete </a>
+            </td>
+        </tr>
+        {% endfor %}               
+    </table>
+    <br>
+    <strong> <a href="{% url 'add' %}"> Press to add new student </a> </strong>
+
+{% endblock %}
